@@ -1,0 +1,193 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* Body background estilo hacker */
+body {
+  background-color: #000;
+  font-family: "Courier New", monospace;
+  color: #00ff00;
+  overflow-x: hidden;
+
+  width: 70%;
+  margin: 0 auto;
+
+  animation: fadeBody 2s ease-in-out;
+}
+
+/* Animación de entrada */
+@keyframes fadeBody {
+  from { opacity: 0; filter: blur(10px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+/* Header estilo terminal */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: rgb(10, 10, 10);
+
+  border-bottom: 1px solid #00ff00;
+
+  text-shadow: 0 0 10px #00ff00;
+
+  animation: headerGlow 3s infinite;
+}
+
+@keyframes headerGlow {
+  0% { text-shadow: 0 0 5px #00ff00; }
+  50% { text-shadow: 0 0 20px #00ff00; }
+  100% { text-shadow: 0 0 5px #00ff00; }
+}
+
+/* Columnas */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Fake image estilo hacker */
+.fakeimg {
+  background-color: #0a0a0a;
+  width: 100%;
+  padding: 20px;
+
+  color: #00ff00;
+
+  border: 1px solid #003300;
+
+  box-shadow: 0 0 10px #00ff00;
+
+  transition: 0.3s ease;
+}
+
+.fakeimg:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px #00ff00;
+}
+
+/* Card estilo terminal */
+.card {
+  background-color: rgb(8, 8, 8);
+  padding: 20px;
+  margin-top: 20px;
+
+  border: 1px solid #00ff00;
+
+  box-shadow: 0 0 10px #003300;
+
+  transition: 0.3s ease;
+
+  animation: cardIn 1s ease-in-out;
+}
+
+/* Animación entrada cards */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:hover {
+  box-shadow: 0 0 25px #00ff00;
+  transform: translateY(-3px);
+}
+
+/* Row */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer estilo hacker */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #050505;
+  color: #00ff00;
+  margin-top: 20px;
+
+  border-top: 1px solid #00ff00;
+
+  text-shadow: 0 0 10px #00ff00;
+
+  animation: footerGlow 3s infinite;
+}
+
+@keyframes footerGlow {
+  0% { box-shadow: 0 0 5px #00ff00; }
+  50% { box-shadow: 0 0 20px #00ff00; }
+  100% { box-shadow: 0 0 5px #00ff00; }
+}
+
+/* Responsive */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Blob hacker mejorado */
+.blob {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+
+  background: #00ff0022;
+  border-radius: 50%;
+  filter: blur(70px);
+
+  transform: translate(-50%, -50%);
+  z-index: -1;
+
+  animation: moveBlob 6s ease-in-out infinite;
+}
+
+@keyframes moveBlob {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    border-radius: 50% 40% 60% 50%;
+  }
+  50% {
+    transform: translate(-48%, -52%) scale(1.2) rotate(180deg);
+    border-radius: 60% 50% 40% 60%;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    border-radius: 50% 40% 60% 50%;
+  }
+}
+
+/* Scroll glow (extra hacker touch) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}

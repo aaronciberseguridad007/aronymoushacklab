@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Aronymous Hack Lab — Nmap Avanzado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0f0a;
+      --panel:#0f1611;
+      --ink:#d2ffe2;
+      --muted:#6fe3a8;
+      --accent:#00ff9c;
+      --accent-2:#00e58a;
+      --shadow:0px 0px 25px rgba(0,255,156,0.4);
+    }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:'Share Tech Mono', monospace;
+      line-height:1.6;
+    }
+    header{
+      background:var(--panel);
+      padding:1rem 2rem;
+      text-align:center;
+      border-bottom:2px solid var(--accent);
+      box-shadow:var(--shadow);
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+    header h1{
+      margin:0;
+      font-size:1.6rem;
+      color:var(--accent);
+      letter-spacing:2px;
+    }
+
+    /* Sidebar */
+    .sidebar{
+      position:fixed;
+      top:0;
+      left:-260px;
+      width:250px;
+      height:100%;
+      background:var(--panel);
+      box-shadow:var(--shadow);
+      transition:all .3s ease;
+      z-index:1500;
+      padding-top:60px;
+      overflow:hidden;
+    }
+    .sidebar.active{
+      left:0;
+      animation: glitch 0.5s linear;
+    }
+    .sidebar a{
+      display:block;
+      padding:15px 20px;
+      color:var(--accent);
+      text-decoration:none;
+      border-bottom:1px solid rgba(0,255,156,0.2);
+      transition:background .2s;
+      position:relative;
+    }
+    .sidebar a:hover{
+      background:rgba(0,255,156,0.1);
+    }
+
+    /* Overlay */
+    .overlay{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      display:none;
+      z-index:1400;
+    }
+    .overlay.active{
+      display:block;
+    }
+
+    /* Glitch effect */
+    @keyframes glitch {
+      0% { transform: translate(0,0); filter: hue-rotate(0deg);}
+      20%{ transform: translate(-2px,2px); filter: hue-rotate(30deg);}
+      40%{ transform: translate(2px,-2px); filter: hue-rotate(-30deg);}
+      60%{ transform: translate(-1px,1px); filter: hue-rotate(60deg);}
+      80%{ transform: translate(1px,-1px); filter: hue-rotate(-60deg);}
+      100%{ transform: translate(0,0); filter: hue-rotate(0deg);}
+    }
+
+    /* Hamburger */
+    .hamburger{
+      position:absolute;
+      top:15px;
+      left:15px;
+      cursor:pointer;
+      z-index:2000;
+      width:30px;
+      height:25px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .hamburger div{
+      height:4px;
+      background:var(--accent);
+      border-radius:2px;
+    }
+
+    /* Container grid */
+    .container{
+      max-width:1200px;
+      margin:auto;
+      padding:2rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(40%,1fr));
+      gap:2rem;
+    }
+    article{
+      background:var(--panel);
+      padding:1.2rem;
+      border-radius:10px;
+      box-shadow:var(--shadow);
+    }
+    article h2{
+      margin-top:0;
+      color:var(--accent);
+    }
+    pre{
+      background:#000;
+      color:var(--accent-2);
+      padding:0.5rem;
+      border-radius:5px;
+      overflow-x:auto;
+    }
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:var(--bg);
+      padding:0.6rem 1rem;
+      border-radius:8px;
+      font-weight:bold;
+      margin-top:1rem;
+      transition:all .2s;
+      box-shadow:var(--shadow);
+      text-decoration:none;
+    }
+    .btn:hover{
+      background:var(--accent-2);
+      transform:scale(1.05);
+    }
+    footer{
+      margin-top:3rem;
+      text-align:center;
+      padding:1rem;
+      border-top:1px solid var(--accent);
+      color:var(--muted);
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      header h1{font-size:1.2rem;}
+          .container{
+      max-width:1200px;
+      margin:auto;
+      padding:2rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(100%,1fr));
+      gap:2rem;
+    }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hamburger" onclick="toggleSidebar()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <h1>Aronymous Hack Lab — Nmap Avanzado</h1>
+  </header>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="#">🏴 Inicio</a>
+    <a href="#escaneo">⚡ Escaneo básico</a>
+    <a href="#fingerprinting">🎯 Fingerprinting</a>
+    <a href="#nse">📜 NSE Scripts</a>
+    <a href="#evasión">🕵️ Evasión</a>
+    <a href="#anonimato">👻 Anonimato</a>
+    <a href="#automatizacion">🤖 Automatización</a>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <div class="container">
+   <article id="escaneo">
+  <h2>Escaneo Stealth con SYN (-sS)</h2>
+  <p>El escaneo SYN envía únicamente el paquete inicial y nunca completa la conexión TCP, evitando detecciones en logs y firewalls.</p>
+  <pre>nmap -sS -Pn -T2 192.168.1.0/24</pre>
+  <p>Opciones avanzadas:</p>
+  <ul>
+    <li><code>-T0/1</code>: Timing ultra sigiloso.</li>
+    <li><code>--scan-delay 500ms</code>: Simula tráfico normal y evita IDS.</li>
+    <li><code>-p 1-65535</code>: Escaneo de todos los puertos.</li>
+  </ul>
+</article>
+
+<article id="fingerprinting">
+  <h2>Fingerprinting de Sistemas Operativos</h2>
+  <p>Detecta el SO del objetivo y su versión exacta combinando <code>-O</code> y <code>--osscan-guess</code>. Útil para planificar exploits específicos.</p>
+  <pre>nmap -O --osscan-guess -sV -p 22,80,443 10.10.10.5</pre>
+  <ul>
+    <li><code>--fuzzy</code>: Detecta sistemas con respuestas inconsistentes.</li>
+    <li><code>--traceroute</code>: Analiza la ruta y detecta firewalls intermedios.</li>
+  </ul>
+</article>
+
+<article id="nse">
+  <h2>Uso Avanzado de NSE Scripts</h2>
+  <p>Nmap NSE permite auditorías completas, desde detección de vulnerabilidades hasta pruebas de fuerza bruta.</p>
+  <pre>nmap --script vuln,auth,default,safe 192.168.1.105</pre>
+  <ul>
+    <li><code>--script-args userdb=users.txt,passdb=pass.txt</code>: Fuerza bruta de servicios.</li>
+    <li><code>--script-updatedb</code>: Actualiza scripts antes del escaneo.</li>
+    <li><code>--script-trace</code>: Rastrea ejecución de scripts para debugging.</li>
+  </ul>
+</article>
+
+<article id="evasión">
+  <h2>Evasión de IDS/IPS y Firewalls</h2>
+  <p>Combinando fragmentación, TTL, timing y checksums falsos, Nmap permite evadir detecciones avanzadas.</p>
+  <pre>nmap -sS -T2 -f --ttl 65 --data-length 25 --badsum target.com</pre>
+  <ul>
+    <li><code>--mtu 24</code>: Fragmenta aún más paquetes.</li>
+    <li><code>--badsum</code>: Envía checksums inválidos para confundir IDS.</li>
+    <li><code>-D RND:5</code>: Utiliza decoys para ocultar el origen.</li>
+  </ul>
+</article>
+
+<article id="anonimato">
+  <h2>Decoys, Spoofing y Proxies</h2>
+  <p>Usa técnicas avanzadas para ocultar tu identidad y confundir sistemas de seguridad.</p>
+  <pre>nmap -sS -D RND:10 --spoof-mac 00:11:22:33:44:55 --proxy socks4://127.0.0.1:9050 192.168.1.1</pre>
+  <ul>
+    <li>Combinar con Tor o proxies HTTP/HTTPS para escaneo anónimo.</li>
+    <li><code>--randomize-hosts</code>: Cambia el orden de escaneo para confundir IDS.</li>
+    <li><code>--source-port 53</code>: Simula tráfico DNS confiable.</li>
+  </ul>
+</article>
+
+<article id="automatizacion">
+  <h2>Automatización y Reporting</h2>
+  <p>Combinando Nmap con Bash o Python, se pueden generar auditorías automáticas y dashboards profesionales.</p>
+  <pre>
+for ip in $(cat targets.txt); do
+    nmap -sV --script vuln $ip -oN reporte_$ip.txt
+done
+  </pre>
+  <ul>
+    <li>Filtrar resultados con <code>grep</code> y <code>awk</code>.</li>
+    <li>Python + <code>python-nmap</code> para dashboards en tiempo real.</li>
+    <li>Exportar resultados a JSON/CSV para análisis posterior.</li>
+  </ul>
+</article>
+
+<article id="tuning">
+  <h2>Optimización de Escaneos Masivos</h2>
+  <p>Para redes grandes, ajustar tiempos y paralelismo mejora eficiencia sin comprometer sigilo.</p>
+  <pre>nmap -sS -Pn -T4 --min-rate 500 -p- 10.0.0.0/16</pre>
+  <ul>
+    <li><code>--min-rate</code>: Define velocidad mínima de paquetes.</li>
+    <li><code>-p-</code>: Escanea todos los puertos TCP posibles.</li>
+    <li>Combinar con <code>-oA</code> para guardar resultados en todos los formatos simultáneamente.</li>
+  </ul>
+</article>
+
+<article id="deteccion-firewalls">
+  <h2>Detección de Firewalls y Filtros</h2>
+  <p>Analiza cómo los paquetes son filtrados para planificar técnicas de evasión.</p>
+  <pre>nmap -sA -Pn --reason target.com</pre>
+  <ul>
+    <li><code>-sA</code>: Escaneo ACK para descubrir firewalls.</li>
+    <li><code>--reason</code>: Motivo de filtrado de cada puerto.</li>
+    <li>Combinar con <code>--traceroute</code> para ver topología de red.</li>
+  </ul>
+</article>
+
+<article id="scripts-personalizados">
+  <h2>Integración con Scripts Personalizados</h2>
+  <p>Crear scripts NSE propios permite detectar vulnerabilidades internas específicas.</p>
+  <pre>nmap --script ./mis-scripts/custom-vuln.nse target.com</pre>
+  <ul>
+    <li>Automatiza auditorías internas específicas de tu empresa.</li>
+    <li>Ejecuta múltiples scripts simultáneamente con <code>--script "custom-*.nse"</code>.</li>
+    <li>Integra resultados en un dashboard con Python o Node.js.</li>
+  </ul>
+</article>
+
+<article id="analis-logs">
+  <h2>Análisis de Logs y Comportamiento de Red</h2>
+  <p>Registrar respuestas y tiempos permite identificar firewalls, IPS y comportamiento de red.</p>
+  <pre>nmap -sS -v -oX reporte.xml 192.168.0.0/24</pre>
+  <ul>
+    <li>Exportar en XML para análisis con herramientas SIEM.</li>
+    <li>Usar <code>--packet-trace</code> para debugging y análisis forense.</li>
+    <li>Identificar hosts activos, puertos filtrados y posibles honeypots.</li>
+  </ul>
+</article>
+
+  </div>
+
+  <footer>
+    <p>© 2025 Aronymous Hack Lab — Proyecto educativo de ciberseguridad ética</p>
+  </footer>
+
+  <script>
+    function toggleSidebar(){
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

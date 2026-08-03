@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css">
+  <title>DNSChef Lab</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="blob">
+
+  </div>
+
+  <div class="header">
+    <h2>Aronymous Hack Lab</h2>
+  </div>
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>Introducción a DNSChef</h2>
+        <h5>Herramienta de envenenamiento DNS.</h5>
+        <div class="fakeimg" style="height:100%;"><img src="../../imgs/warning.gif" alt="" width="100%"></div> <br>
+        <p>DNSChef es un *DNS proxy* altamente configurable diseñado para pruebas de seguridad, auditorías de red y ejercicios de Red Team.</p>
+        <p>Permite manipular resoluciones DNS en tiempo real, redirigiendo dominios específicos hacia direcciones IP falsas, controladas por el analista. Es muy útil para detectar dependencias inseguras, analizar tráfico de aplicaciones y ejecutar ataques de *phishing controlado* en entornos de laboratorio.</p>
+      </div>
+
+      <div class="card">
+        <h2>Ejemplos de uso</h2>
+        <h5>Casos prácticos de seguridad ofensiva.</h5> <br>
+        <div class="fakeimg" style="height:100%;"><img src="../../imgs/aliencode.webp" alt="" width="100%"></div> <br>
+        <p>Ejemplo 1: Redirigir todas las consultas a <b>facebook.com</b> hacia una IP interna para simular un portal falso.</p>
+        <pre>
+dnschef --fakeip 192.168.1.100 --fakedomains facebook.com
+        </pre>
+        <p>Ejemplo 2: Bloquear resoluciones de actualizaciones para analizar comportamiento de software.</p>
+        <pre>
+dnschef --fakeip 127.0.0.1 --fakedomains update.microsoft.com
+        </pre>
+        <p>Ejemplo 3: Interceptar y registrar todas las consultas DNS de la red.</p>
+        <pre>
+dnschef --logfile capturas_dns.log
+        </pre>
+      </div>
+    </div>
+
+    <div class="rightcolumn">
+      <div class="card">
+        <h2>Sobre DNSChef</h2><br>
+        <div class="fakeimg" style="height:100%;"> <img src="../../imgs/caminando.gif" alt="" width="100%"></div> <br><br>
+        <p>Desarrollado en Python, soporta múltiples tipos de registros (A, MX, CNAME, TXT). Es ideal en entornos de pentesting, simulaciones MITM y estudios de malware.</p>
+      </div>
+      <div class="card">
+        <h3>Comandos útiles</h3> <br>
+        <div class="fakeimg">--fakeip</div><br>
+        <div class="fakeimg">--fakedomains</div><br>
+        <div class="fakeimg">--logfile</div>
+      </div>
+      <div class="card">
+        <h3>Recomendación</h3><br>
+        <p>DNSChef debe usarse únicamente en entornos controlados y de pruebas, nunca en redes de terceros sin autorización.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <h2>Aronymous Hack Lab</h2>
+  </div>
+
+</body>
+</html>

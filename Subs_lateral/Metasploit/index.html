@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="style.css">
+<title>Blob Hacker</title>
+<style>
+
+</style>
+</head>
+<body>
+
+<div class="blob"></div>
+
+<div class="header">
+  <h2>METASPLOIT</h2>
+</div>
+
+<div class="row">
+
+  <div class="leftcolumn">
+
+    <div class="card">
+      <h2>¿Qué es Metasploit?</h2> <br>
+
+      <div class="fakeimg">
+        <img src="meta1.gif" alt="img" width="100%">
+      </div>
+         <br><br>
+      <p>
+        Metasploit Framework es una plataforma avanzada de ciberseguridad utilizada para pruebas de penetración (pentesting). Permite identificar, explotar y validar vulnerabilidades en sistemas y aplicaciones.
+      </p>
+
+      <p>
+        Es ampliamente utilizada en hacking ético para simular ataques reales como ejecución remota de código, explotación de servicios vulnerables y pruebas de seguridad en redes corporativas.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Ejemplo de uso de Metasploit</h2> <br>
+
+      <div class="fakeimg">
+        <img src="meta.png" alt="img" width="100%">
+      </div>
+        <br><br>
+      <p>
+        Metasploit permite analizar servicios vulnerables como SMB, FTP o HTTP en sistemas desactualizados para comprobar si pueden ser explotados.
+      </p>
+
+      <p>
+        Un pentester puede usar módulos de explotación para obtener una sesión remota y evaluar el impacto real de la vulnerabilidad en un entorno controlado.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="rightcolumn">
+
+    <div class="card">
+      <h2>About Me</h2> <br>
+      <div class="fakeimg">
+        <img src="../../imgs/caminando.gif" alt="img" width="100%">
+      </div> <br><br>
+      <p>
+        Metasploit es una herramienta fundamental en el análisis de seguridad ofensiva y auditorías profesionales.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Popular Post</h3><br>
+      <div class="fakeimg">Exploits</div><br>
+      <div class="fakeimg">Payloads</div><br>
+      <div class="fakeimg">Sessions</div>
+    </div>
+
+    <div class="card">
+      <h3>Importante!!!</h3><br>
+      <p>
+        Uso responsable en laboratorios o entornos autorizados.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+
+<br><br>
+
+<h1 style="background-color: #1b1a1a;">
+  <center>Video de Explicación</center>
+</h1>
+
+<div class="video-hacker">
+  <h2>> METASPLOIT TRAINING VIDEO</h2>
+
+  <iframe 
+    src="https://www.youtube.com/embed/KCtoBRi7HGg?si=92ZTagg_C3c8-Snv" title="
+    title="Metasploit"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    sandbox="allow-same-origin allow-scripts allow-popups allow-presentation">
+  </iframe>
+
+  <p class="status">
+    > conexión segura establecida...<br>
+    > exploit lab streaming activo
+  </p>
+</div>
+<div>
+  <div class="card">
+  <h2>Metasploit - Comandos esenciales (MSFConsole)</h2> <br>
+
+  <h3>🟢 Inicio y sistema</h3> <br>
+  <p><b>msfconsole</b> → Iniciar Metasploit</p>
+  <p><b>version</b> → Ver versión</p>
+  <p><b>help</b> → Ayuda general</p>
+  <p><b>exit</b> → Salir</p>
+  <p><b>banner</b> → Cambiar banner</p>
+  <br>
+  <h3>🔎 Búsqueda de módulos</h3><br>
+  <p><b>search exploit</b> → Buscar exploits</p>
+  <p><b>search type:auxiliary</b> → Buscar módulos auxiliares</p>
+  <p><b>search platform:linux</b> → Filtrar por sistema</p>
+  <p><b>search name:samba</b> → Buscar por nombre</p>
+<br>
+  <h3>⚙️ Uso de módulos</h3>  <br>
+
+  <p><b>use exploit/...</b> → Seleccionar exploit</p>
+  <p><b>show options</b> → Ver opciones del módulo</p>
+  <p><b>show payloads</b> → Ver payloads disponibles</p>
+  <p><b>show targets</b> → Ver objetivos soportados</p>
+  <br>
+
+  <h3>🎯 Configuración</h3>  <br>
+
+  <p><b>set RHOSTS</b> → IP objetivo</p>
+  <p><b>set RPORT</b> → Puerto</p>
+  <p><b>set LHOST</b> → IP atacante</p>
+  <p><b>set LPORT</b> → Puerto atacante</p>
+  <p><b>set PAYLOAD</b> → Payload</p>
+  <p><b>unset</b> → Quitar valor</p>
+  <br>
+
+  <h3>💥 Ejecución</h3>  <br>
+
+  <p><b>exploit</b> → Ejecutar exploit</p>
+  <p><b>run</b> → Ejecutar módulo</p>
+  <p><b>check</b> → Verificar vulnerabilidad</p>
+  <br>
+
+  <h3>🧠 Sesiones</h3>  <br>
+
+  <p><b>sessions -l</b> → Listar sesiones</p>
+  <p><b>sessions -i ID</b> → Entrar a sesión</p>
+  <p><b>background</b> → Dejar sesión en segundo plano</p>
+  <br>
+
+  <h3>🗄️ Base de datos</h3>  <br>
+
+  <p><b>db_status</b> → Estado DB</p>
+  <p><b>hosts</b> → Hosts detectados</p>
+  <p><b>services</b> → Servicios detectados</p>
+  <p><b>vulns</b> → Vulnerabilidades</p>
+  <p><b>workspace</b> → Gestionar proyectos</p>
+  <br>
+
+  <h3>🧰 Auxiliares</h3>  <br>
+
+  <p><b>use auxiliary/scanner/...</b> → Scanners</p>
+  <p><b>use auxiliary/dos/...</b> → DoS tests</p>
+  <p><b>use auxiliary/gather/...</b> → Recolección info</p>
+  <br>
+
+  <h3>⚡ Post-explotación</h3>  <br>
+
+  <p><b>sysinfo</b> → Info del sistema</p>
+  <p><b>getuid</b> → Usuario actual</p>
+  <p><b>ps</b> → Procesos</p>
+  <p><b>shell</b> → Shell del sistema</p>
+  <p><b>hashdump</b> → Hashes (si permitido)</p>
+  <br>
+
+  <h3>🔐 Payloads (ejemplos)</h3>
+  <p><b>windows/meterpreter/reverse_tcp</b></p>
+  <p><b>linux/x64/meterpreter/reverse_tcp</b></p>
+  <p><b>php/meterpreter/reverse_tcp</b></p>
+</div>
+</div>
+
+<style>
+.video-hacker {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 800px;
+
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 15px #00ff00, inset 0 0 10px #003300;
+
+  font-family: monospace;
+  color: #00ff00;
+  text-align: center;
+
+  animation: glowPulse 3s infinite;
+}
+
+.video-hacker iframe {
+  width: 100%;
+  height: 400px;
+
+  border: 2px solid #00ff00;
+  box-shadow: 0 0 20px #00ff00;
+
+  filter: contrast(1.1) saturate(1.2);
+}
+
+.status {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 10px #00ff00; }
+  50% { box-shadow: 0 0 25px #00ff00; }
+  100% { box-shadow: 0 0 10px #00ff00; }
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+</style>
+
+</body>
+</html>
