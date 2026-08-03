@@ -1,0 +1,98 @@
+.footer {
+  background: #000;
+  color: #eee;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* GRID */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* COL */
+.footer-col h3 {
+  color: #0f0;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* LINKS */
+.footer a {
+  color: orangered;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer a:hover {
+  color: #0f0;
+  text-shadow: 0 0 10px #0f0;
+}
+
+/* =========================
+   🔥 GLITCH EFFECT
+========================= */
+
+.glitch {
+  position: relative;
+  color: #0f0;
+  animation: flicker 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+  color: #ff003c;
+  z-index: -1;
+  animation: glitchTop 1.5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  color: #00fff9;
+  z-index: -2;
+  animation: glitchBottom 1.2s infinite linear alternate-reverse;
+}
+
+/* 🎛 animaciones */
+@keyframes glitchTop {
+  0% { transform: translate(0,0); clip-path: inset(0 0 70% 0); }
+  20% { transform: translate(-2px,-2px); }
+  40% { transform: translate(-1px,1px); }
+  60% { transform: translate(2px,-1px); }
+  80% { transform: translate(-2px,2px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes glitchBottom {
+  0% { transform: translate(0,0); clip-path: inset(70% 0 0 0); }
+  25% { transform: translate(2px,2px); }
+  50% { transform: translate(-2px,1px); }
+  75% { transform: translate(1px,-2px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+  52% { opacity: 0.4; }
+  54% { opacity: 1; }
+}

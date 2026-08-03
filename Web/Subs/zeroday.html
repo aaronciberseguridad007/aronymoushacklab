@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Zero-Day Exploits - Hacker Index</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: #000000;
+    color: #00ff66;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #00ff66;
+}
+
+header h1 {
+    margin: 0;
+    text-shadow: 0 0 10px #00ff66;
+}
+
+header p {
+    color: #66ff99;
+}
+
+/* LAYOUT */
+.container {
+    display: flex;
+}
+
+/* SIDEBAR */
+nav {
+    width: 260px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    border-right: 1px solid #00ff66;
+    padding: 15px;
+    background: #050505;
+}
+
+nav a {
+    display: block;
+    color: #00ff66;
+    text-decoration: none;
+    margin: 8px 0;
+    padding: 6px;
+    border-left: 2px solid transparent;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    border-left: 2px solid #00ff66;
+    background: #001a0d;
+}
+
+/* MAIN */
+main {
+    padding: 25px;
+    flex: 1;
+}
+
+/* SECTIONS */
+section {
+    margin-bottom: 60px;
+    border-bottom: 1px solid #003322;
+    padding-bottom: 20px;
+}
+
+h2 {
+    color: #00ff66;
+    text-shadow: 0 0 6px #00ff66;
+}
+
+.card {
+    background: #050505;
+    border: 1px solid #003322;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #001a0d;
+}
+
+/* LINKS */
+a.external {
+    color: #66ff99;
+    text-decoration: underline;
+}
+
+code {
+    background: #001a0d;
+    padding: 10px;
+    display: block;
+    border-left: 3px solid #00ff66;
+    overflow-x: auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>☠ ZERO-DAY EXPLOITS SYSTEM</h1>
+    <p>Advanced Cybersecurity Knowledge Base </p>
+</header>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+<nav>
+    <h3>📡 INDEX</h3>
+    <a href="#intro">01. Introducción</a>
+    <a href="#definicion">02. Definición</a>
+    <a href="#killchain">03. Kill Chain</a>
+    <a href="#tipos">04. Tipos</a>
+    <a href="#economia">05. Economía</a>
+    <a href="#arquitectura">06. Arquitectura</a>
+    <a href="#defensa">07. Defensa</a>
+    <a href="#exploitchain">08. Exploit Chain</a>
+    <a href="#patchdiff">09. Patch Diffing</a>
+    <a href="#refs">10. Referencias</a>
+</nav>
+
+<!-- CONTENIDO -->
+<main>
+
+<section id="intro">
+<h2>01. 🧠 INTRODUCCIÓN</h2>
+<div class="card">
+Un zero-day es una vulnerabilidad desconocida por el fabricante que puede ser explotada antes de que exista un parche.
+
+<br><br>
+🔗 Leer más:
+<a class="external" href="https://owasp.org/www-community/vulnerabilities/" target="_blank">
+OWASP Vulnerabilities
+</a>
+</div>
+</section>
+
+<section id="definicion">
+<h2>02. 📌 DEFINICIÓN</h2>
+<div class="card">
+Un zero-day exploit ocurre cuando un atacante utiliza una vulnerabilidad desconocida públicamente.
+
+<br><br>
+🔗 Referencia técnica:
+<a class="external" href="https://cve.mitre.org/" target="_blank">
+MITRE CVE Database
+</a>
+</div>
+</section>
+
+<section id="killchain">
+<h2>03. 🧬 KILL CHAIN</h2>
+<div class="card">
+<code>
+Bug → Discovery → Exploit → Weaponization → Delivery → Execution → Persistence → Detection → Patch
+</code>
+
+<br><br>
+🔗 Concepto relacionado:
+<a class="external" href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html" target="_blank">
+Cyber Kill Chain Model
+</a>
+</div>
+</section>
+
+<section id="tipos">
+<h2>04. ⚙ TIPOS DE ZERO-DAY</h2>
+<div class="card">
+- Memory Corruption<br>
+- Browser Exploits<br>
+- Privilege Escalation<br>
+- RCE (Remote Code Execution)<br>
+- 0-click exploits
+
+<br><br>
+🔗 Exploit research:
+<a class="external" href="https://www.exploit-db.com/" target="_blank">
+Exploit Database
+</a>
+</div>
+</section>
+
+<section id="economia">
+<h2>05. 💰 ECONOMÍA DEL ZERO-DAY</h2>
+<div class="card">
+Un zero-day puede valer millones dependiendo del impacto.
+
+<br><br>
+Browser exploit: $100k–$500k<br>
+Mobile chain: $1M+<br>
+0-click exploit: $2M–$10M+
+
+<br><br>
+🔗 Mercado legal:
+<a class="external" href="https://www.zerodium.com/" target="_blank">
+Zerodium (Bug bounty platform)
+</a>
+</div>
+</section>
+
+<section id="arquitectura">
+<h2>06. 🧠 ARQUITECTURA DE ATAQUE</h2>
+<div class="card">
+<code>
+Recon → Delivery → Exploit → Sandbox Escape → Privilege Escalation → Persistence → C2 → Exfiltration
+</code>
+</div>
+</section>
+
+<section id="defensa">
+<h2>07. 🛡 DEFENSA MODERNA</h2>
+<div class="card">
+- EDR / XDR behavioral analysis<br>
+- Sandboxing<br>
+- Least privilege<br>
+- Memory protection (ASLR, DEP)<br>
+- Patch management
+
+<br><br>
+🔗 Seguridad defensiva:
+<a class="external" href="https://www.microsoft.com/en-us/security/business/security-101" target="_blank">
+Microsoft Security Guide
+</a>
+</div>
+</section>
+
+<section id="exploitchain">
+<h2>08. 🧩 EXPLOIT CHAIN</h2>
+<div class="card">
+Un ataque moderno combina múltiples bugs:
+
+<br><br>
+1. Information Leak<br>
+2. Memory Corruption<br>
+3. Sandbox Escape<br>
+4. Privilege Escalation
+</div>
+</section>
+
+<section id="patchdiff">
+<h2>09. 🔬 PATCH DIFFING</h2>
+<div class="card">
+Técnica que compara versiones antes y después de un parche para descubrir la vulnerabilidad original.
+
+<br><br>
+🔗 Investigación:
+<a class="external" href="https://www.usenix.org/" target="_blank">
+USENIX Security Research
+</a>
+</div>
+</section>
+
+<section id="refs">
+<h2>10. 📚 REFERENCIAS</h2>
+<div class="card">
+🔗 OWASP: https://owasp.org<br>
+🔗 MITRE CVE: https://cve.mitre.org<br>
+🔗 Exploit DB: https://www.exploit-db.com<br>
+🔗 NIST Security: https://www.nist.gov/cybersecurity
+</div>
+</section>
+
+</main>
+
+</div>
+
+</body>
+</html>
