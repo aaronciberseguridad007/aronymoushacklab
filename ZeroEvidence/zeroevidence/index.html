@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ZeroEvidence | Privacy Framework</title>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui;
+  background:#050507;
+  color:#eaeaea;
+  display:flex;
+  justify-content:center;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:16px;
+  padding:16px;
+}
+
+nav{
+  background:#0b0b0e;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid rgba(124,255,58,0.1);
+  height:fit-content;
+}
+
+nav button{
+  width:100%;
+  margin-bottom:8px;
+  padding:10px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.1);
+  color:#7CFF3A;
+  cursor:pointer;
+  border-radius:8px;
+}
+
+main{
+  background:#0b0b0e;
+  padding:16px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.05);
+  min-height:80vh;
+}
+
+.card{
+  background:#09090c;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:12px;
+  border-left:3px solid #7CFF3A;
+}
+
+a{
+  color:#7CFF3A;
+  text-decoration:none;
+}
+a:hover{ text-decoration:underline; }
+
+.small{ color:#9aa0a6; font-size:13px; }
+
+/* EXTRA highlight */
+.warning{
+  border-left:3px solid #ff375f;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<nav>
+  <h3 style="color:#7CFF3A">ZeroEvidence</h3>
+
+  <button onclick="show('home')">🏠 ZERO</button>
+  <button onclick="show('forums')">💬 Foros</button>
+  <button onclick="show('tools')">🧰 Herramientas</button>
+  <button onclick="show('tutorial')">📘 Tutorial</button>
+</nav>
+
+<main>
+
+<!-- 🧠 NUEVO BLOQUE AVANZADO (ARRIBA COMO PEDISTE) -->
+<section class="card warning">
+  <h2>🛡️ GUÍA AVANZADA DE PRIVACIDAD DIGITAL</h2>
+
+  <p class="small">
+  Esta guía es educativa. La privacidad ayuda a proteger tus datos, no a desaparecer de internet.
+  </p>
+
+  <h3>🧅 1. Instalación de Tails OS (privacidad avanzada)</h3>
+  <p class="small">
+  Tails es un sistema operativo que se ejecuta desde USB y no deja rastros en el PC.
+  </p>
+
+  <b>Pasos básicos:</b>
+  <ol class="small">
+    <li>Entra a: <a href="https://tails.net/" target="_blank">https://tails.net</a></li>
+    <li>Descarga la imagen ISO oficial</li>
+    <li>Usa “balenaEtcher” para grabar en USB</li>
+    <li>Inicia el PC desde USB (boot menu)</li>
+    <li>Usa Tor Browser incluido en Tails</li>
+  </ol>
+
+  <p class="small">
+  ⚠️ Importante: Tails mejora privacidad, pero no hace invisible en internet.
+  </p>
+
+  <h3>🔐 2. VPN recomendadas (seguras)</h3>
+  <ul class="small">
+    <li><a href="https://protonvpn.com/" target="_blank">ProtonVPN</a></li>
+    <li><a href="https://www.mullvad.net/" target="_blank">Mullvad VPN</a></li>
+  </ul>
+
+  <h3>🧠 3. Navegadores de privacidad</h3>
+  <ul class="small">
+    <li><a href="https://www.torproject.org/" target="_blank">Tor Browser</a></li>
+    <li>Firefox con protección anti-tracking</li>
+  </ul>
+
+</section>
+
+<!-- HOME -->
+<section id="home">
+  <h2>🛡️ Privacidad & Ciberseguridad</h2>
+  <p class="small">
+  Plataforma educativa sobre anonimato digital, protección de datos y seguridad en internet.
+  </p>
+
+  <div class="card">
+    <h3>🔗 Recursos oficiales</h3>
+    <a href="https://www.torproject.org/" target="_blank">Tor Project</a><br>
+    <a href="https://www.eff.org/" target="_blank">EFF (derechos digitales)</a><br>
+    <a href="https://proton.me/" target="_blank">Proton Mail</a>
+  </div>
+
+  <div class="card">
+    <h3>🧰 Extras útiles</h3>
+    <ul class="small">
+      <li>Bitwarden (gestor de contraseñas)</li>
+      <li>DuckDuckGo (buscador privado)</li>
+      <li>Brave Browser</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FORUMS -->
+<section id="forums" style="display:none">
+  <h2>💬 Foros de Seguridad</h2>
+
+  <div class="card">
+    <b>r/privacy</b><br>
+    <a href="https://www.reddit.com/r/privacy/" target="_blank">Entrar</a>
+  </div>
+
+  <div class="card">
+    <b>r/cybersecurity</b><br>
+    <a href="https://www.reddit.com/r/cybersecurity/" target="_blank">Entrar</a>
+  </div>
+
+  <div class="card">
+    <b>StackExchange Security</b><br>
+    <a href="https://security.stackexchange.com/" target="_blank">Entrar</a>
+  </div>
+
+  <div class="card">
+    <h3>🧰 Herramientas en foros</h3>
+    <ul class="small">
+      <li>OpenVPN discussions</li>
+      <li>Linux privacy communities</li>
+      <li>Threat modeling guides</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" style="display:none">
+  <h2>🧰 Herramientas de Privacidad</h2>
+
+  <div class="card">
+    <b>Tor Browser</b><br>
+    <a href="https://www.torproject.org/download/" target="_blank">Descargar</a>
+  </div>
+
+  <div class="card">
+    <b>Proton Mail</b><br>
+    <a href="https://proton.me/mail" target="_blank">Usar</a>
+  </div>
+
+  <div class="card">
+    <b>Signal</b><br>
+    <a href="https://signal.org/" target="_blank">Descargar</a>
+  </div>
+
+  <div class="card">
+    <h3>🔐 Extra avanzado</h3>
+    <ul class="small">
+      <li>KeepassXC (contraseñas offline)</li>
+      <li>DNS seguro (Cloudflare 1.1.1.1)</li>
+      <li>Linux Live USB</li>
+    </ul>
+  </div>
+</section>
+
+<!-- TUTORIAL -->
+<section id="tutorial" style="display:none">
+  <h2>📘 Tutorial de anonimato (educativo)</h2>
+
+  <div class="card">
+    <h3>✔ Paso 1: Sistema seguro</h3>
+    <p class="small">Usa Tails OS o Linux Live para evitar rastros locales.</p>
+  </div>
+
+  <div class="card">
+    <h3>✔ Paso 2: Conexión segura</h3>
+    <p class="small">Usa VPN confiable antes de navegar.</p>
+  </div>
+
+  <div class="card">
+    <h3>✔ Paso 3: Navegación</h3>
+    <p class="small">Usa Tor Browser para reducir rastreo web.</p>
+  </div>
+
+  <div class="card">
+    <h3>✔ Paso 4: Identidad digital</h3>
+    <p class="small">No reutilices correos ni contraseñas.</p>
+  </div>
+
+  <div class="card warning">
+    <b>⚠️ Nota importante</b>
+    <p class="small">
+      Estas herramientas protegen privacidad, pero no hacen invisible a una persona en internet.
+    </p>
+  </div>
+</section>
+
+</main>
+
+</div>
+
+<script>
+function show(id){
+  document.querySelectorAll("main section").forEach(s => s.style.display="none");
+  document.getElementById(id).style.display="block";
+}
+</script>
+
+</body>
+</html>

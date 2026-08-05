@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZeroEvidence</title>
+
+<style>
+body {
+    margin:0;
+    background:black;
+    color:#00ff00;
+    font-family: monospace;
+    overflow:hidden;
+}
+
+canvas {
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+
+.container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+    text-align:center;
+}
+
+.hidden { display:none; }
+
+h1 {
+    font-size:3rem;
+    animation:glitch 1s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow:2px 2px red; }
+    50% { text-shadow:-2px -2px green; }
+    100% { text-shadow:2px -2px red; }
+}
+
+input {
+    background:black;
+    border:1px solid #00ff00;
+    color:#00ff00;
+    padding:10px;
+    margin-top:10px;
+    width:200px;
+}
+
+button {
+    margin-top:10px;
+    background:black;
+    color:red;
+    border:1px solid red;
+    padding:10px;
+    cursor:pointer;
+}
+
+#terminal {
+    width:90%;
+    max-width:600px;
+    height:300px;
+    overflow-y:auto;
+    border:1px solid #00ff00;
+    padding:10px;
+    margin-top:20px;
+    text-align:left;
+}
+
+.menu {
+    position:fixed;
+    top:10px;
+    right:10px;
+    color:red;
+    cursor:pointer;
+}
+
+.secret {
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    display:none;
+    color:#00ff00;
+}
+
+@media(max-width:600px){
+    h1 { font-size:2rem; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="menu" onclick="toggleSecret()">☰</div>
+
+<div class="secret" id="secretMenu">
+    > acceso oculto activado
+</div>
+
+<div class="container" id="login">
+    <h1>ZeroEvidence</h1>
+    <p>> acceso requerido</p>
+    <input type="password" id="pass" placeholder="clave...">
+    <button onclick="login()">Entrar</button>
+</div>
+
+<div class="container hidden" id="main">
+    <h1>ZeroEvidence</h1>
+    <p>> sistema sin evidencia</p>
+
+    <div id="terminal"></div>
+    <input type="text" id="cmd" placeholder="escribe comando..." onkeydown="runCommand(event)">
+</div>
+
+<audio id="beep">
+<source src="https://www.soundjay.com/button/beep-07.wav">
+</audio>
+
+<script>
+// MATRIX
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array(Math.floor(columns)).fill(1);
+
+function draw(){
+    ctx.fillStyle="rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="#00ff00";
+    ctx.font=fontSize+"px monospace";
+
+    drops.forEach((y,i)=>{
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        ctx.fillText(text,i*fontSize,y*fontSize);
+        if(y*fontSize>canvas.height && Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+    });
+}
+setInterval(draw,35);
+
+// LOGIN
+function login(){
+    const pass = document.getElementById("pass").value;
+    if(pass === "ZERO3.14"){
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("main").classList.remove("hidden");
+        typeText("> acceso concedido");
+    } else {
+        alert("Acceso denegado");
+    }
+}
+
+// TERMINAL
+const terminal = document.getElementById("terminal");
+
+function typeText(text){
+    let i=0;
+    const line = document.createElement("div");
+    terminal.appendChild(line);
+
+    function write(){
+        if(i<text.length){
+            line.innerHTML += text[i];
+            i++;
+            setTimeout(write,30);
+        }
+    }
+    write();
+}
+
+// COMANDOS
+function runCommand(e){
+    if(e.key==="Enter"){
+        const cmd = document.getElementById("cmd").value;
+        document.getElementById("cmd").value="";
+
+        document.getElementById("beep").play();
+
+        typeText("> "+cmd);
+
+        switch(cmd.toLowerCase()){
+            case "help":
+                typeText("comandos: help, clear, hack, exit");
+                break;
+            case "hack":
+    typeText("iniciando intrusion...");
+    setTimeout(()=>{
+        typeText("redireccionando a ZeroEvidence...");
+        setTimeout(()=>{
+            window.location.href = "zeroevidence";
+        },2000);
+    },2000);
+    break;
+            case "clear":
+                terminal.innerHTML="";
+                break;
+            case "exit":
+                location.reload();
+                break;
+            default:
+                typeText("comando desconocido");
+        }
+    }
+}
+
+// MENÚ SECRETO
+function toggleSecret(){
+    const m = document.getElementById("secretMenu");
+    m.style.display = m.style.display==="block" ? "none" : "block";
+}
+
+// RESIZE
+window.addEventListener("resize", ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
